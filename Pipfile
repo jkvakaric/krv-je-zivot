@@ -1,12 +1,9 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 django = "==2.0.5"  # pyup: < 2.1  # https://www.djangoproject.com/
 wheel = "==0.31.0"  # https://github.com/pypa/wheel
 django-environ = "==0.4.4"  # https://github.com/joke2k/django-environ
@@ -48,7 +45,8 @@ pylint = "==1.8.4"  # https://github.com/PyCQA/pylint
 flake8 = "==3.5.0"  # https://github.com/PyCQA/flake8
 yapf = "==0.21.0"  # https://github.com/google/yapf
 rope = "==0.10.7"  # https://github.com/python-rope/rope
+pandas = "*"
+numpy = "*"
 
 [requires]
-
 python_version = "3.6"
