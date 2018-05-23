@@ -48,6 +48,7 @@ pylint = "==1.8.4"  # https://github.com/PyCQA/pylint
 flake8 = "==3.5.0"  # https://github.com/PyCQA/flake8
 yapf = "==0.21.0"  # https://github.com/google/yapf
 rope = "==0.10.7"  # https://github.com/python-rope/rope
+pgcli = "==1.9.1"  # https://github.com/dbcli/pgcli
 
 [requires]
 
