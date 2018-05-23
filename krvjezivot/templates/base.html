@@ -1,0 +1,84 @@
+{% extends "core.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block body %}
+
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="{% url 'dashboard' %}" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">{% include 'partials/appname_mini.html' %}</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">{% include 'partials/appname.html' %}</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          {% include 'partials/notifications_menu.html' %}
+          {% include 'partials/user_account_menu.html' %}
+          <li>
+            <a data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar -->
+    <section class="sidebar">
+      {% include 'partials/sidebar_menu.html' %}
+    </section>
+
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+    {% block pageheader %}{% endblock pageheader %}
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!-- TODO - usage of this to be determined -->
+      {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+
+      {% block content %}{% endblock content %}
+
+    </section>
+    <!-- /.content -->
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  {% include 'partials/footer.html' %}
+
+  <!-- must be after footer -->
+  {% include 'partials/control_sidebar.html' %}
+
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+
+</div>
+<!-- ./wrapper -->
+
+{% endblock body %}

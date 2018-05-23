@@ -1,0 +1,30 @@
+{% extends "core.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Sign Out" %}{% endblock title %}
+
+{% block bodyclasses %}hold-transition login-page{% endblock bodyclasses %}
+
+{% block body %}
+  <div class="login-box">
+    <div class="login-logo">
+      <a>{% include 'partials/appname.html' %}</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <h2 class="login-box-msg">{% trans "Sign Out" %}</h2>
+      <p class="login-box-msg">{% trans 'Are you sure you want to sign out?' %}</p>
+      <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+        <button class="btn btn-danger btn-block btn-flat" type="submit">{% trans 'Sign Out' %}</button>
+      </form><br>
+      <a href="{% url 'home' %}" class="btn btn-default btn-block btn-flat">{% trans 'Go Back' %}</a>
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->
+{% endblock body %}

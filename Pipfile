@@ -1,0 +1,54 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+django = "==2.0.5"  # pyup: < 2.1  # https://www.djangoproject.com/
+wheel = "==0.31.0"  # https://github.com/pypa/wheel
+django-environ = "==0.4.4"  # https://github.com/joke2k/django-environ
+whitenoise = "==3.3.1"  # https://github.com/evansd/whitenoise
+django-crispy-forms = "==1.7.2"  # https://github.com/django-crispy-forms/django-crispy-forms
+django-model-utils = "==3.1.2"  # https://github.com/jazzband/django-model-utils
+pillow = "==5.1.0"  # https://github.com/python-pillow/Pillow
+argon2-cffi = "==18.1.0"  # https://github.com/hynek/argon2_cffi
+django-allauth = "==0.36.0"  # https://github.com/pennersr/django-allauth
+psycopg2-binary = "==2.7.4"  # https://github.com/psycopg/psycopg2
+awesome-slugify = "==1.6.5"  # https://github.com/dimka665/awesome-slugify
+pytz = "==2018.4"  # https://github.com/stub42/pytz
+django-redis = "==4.9.0"  # https://github.com/niwinz/django-redis
+redis = "==2.10.6"  # https://github.com/antirez/redis
+celery = "==3.1.26.post2"  # pyup: <4.0  # https://github.com/celery/celery
+django-enumfields = "==0.10.0"  # https://github.com/hzdg/django-enumfields
+djangorestframework = "==3.8.2"  # https://github.com/encode/django-rest-framework
+coreapi = "==2.3.3"  # https://github.com/core-api/python-client
+coverage = "==4.5.1"  # https://github.com/nedbat/coveragepy
+django-coverage-plugin = "==1.5.0"  # https://github.com/nedbat/django_coverage_plugin
+sphinx = "==1.7.4"  # https://github.com/sphinx-doc/sphinx
+django-extensions = "==2.0.7"  # https://github.com/django-extensions/django-extensions
+werkzeug = "==0.14.1"  # https://github.com/pallets/werkzeug
+django-test-plus = "==1.0.22"  # https://github.com/revsys/django-test-plus
+factory-boy = "==2.11.1"  # https://github.com/FactoryBoy/factory_boy
+django-debug-toolbar = "==1.9.1"  # https://github.com/jazzband/django-debug-toolbar
+ipdb = "==0.11"  # https://github.com/gotcha/ipdb
+pytest = "==3.5.1"  # https://github.com/pytest-dev/pytest
+pytest-django = "==3.2.1"  # https://github.com/pytest-dev/pytest-django
+pytest-sugar = "==0.9.1"  # https://github.com/Frozenball/pytest-sugar
+gevent = "==1.2.2"  # https://github.com/gevent/gevent
+gunicorn = "==19.8.1"  # https://github.com/benoitc/gunicorn
+boto3 = "==1.6.2"  # pyup: update minor  # https://github.com/boto/boto3
+django-storages = "==1.6.6"  # https://github.com/jschneier/django-storages
+django-anymail = "==2.2"  # https://github.com/anymail/django-anymail
+django-npm = "==1.0.0"  # https://github.com/kevin1024/django-npm
+pyupio = "==1.0.1"  # https://github.com/pyupio/pyup
+pylint = "==1.8.4"  # https://github.com/PyCQA/pylint
+flake8 = "==3.5.0"  # https://github.com/PyCQA/flake8
+yapf = "==0.21.0"  # https://github.com/google/yapf
+rope = "==0.10.7"  # https://github.com/python-rope/rope
+
+[requires]
+
+python_version = "3.6"

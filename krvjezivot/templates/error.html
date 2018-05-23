@@ -1,0 +1,40 @@
+{% extends "core.html" %}
+
+{% block title %}ERROR{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<style>
+  body {
+    background-color: #ecf0f5;
+  }
+  .error-page>.headline {
+    float: unset;
+    text-align: center;
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="error-page clearfix">
+    <h2 class="headline text-red">{% block error %}ERROR{% endblock error %}</h2>
+  </div>
+  <!-- /.error-page -->
+
+  <div class="error-content text-center">
+    <h3><i class="fa fa-warning text-red"></i> {% block errdesc %}Oops! Looks like something went wrong!{% endblock errdesc %}</h3>
+
+    <p>We track these errors automatically and work on fixing them right away.</p>
+    <p>But if the problem persists feel free to contact us.</p>
+    <p>Meanwhile, you may <a href="{% url 'home' %}">return to dashboard</a>.</p>
+
+  </div>
+
+</section>
+<!-- /.content -->
+
+{% endblock body %}

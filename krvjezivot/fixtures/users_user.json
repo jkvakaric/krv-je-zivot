@@ -1,0 +1,78 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$R3Vxbk5xUXYxVlZM$8tAt0Y2/Z7tC/aAZemOFgg",
+        "last_login": "2018-05-20T21:44:07.581Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "Adminko",
+        "last_name": "Adminic",
+        "email": "admin@email.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2018-05-20T21:43:39.869Z",
+        "full_name": "Adminko Adminic",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$WWF6Wk1WM01aNXpO$ndaNVowh7d7/yFWkYXwsGA",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "smocilac",
+        "first_name": "Stjepan",
+        "last_name": "Mocilac",
+        "email": "smocilac@email.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-20T21:44:27Z",
+        "full_name": "Stjepan Mocilac",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$Y1l6Qm1oUGZuSHFI$vaap95HYRw8DpNck4ZoneA",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "dpodrebarac",
+        "first_name": "David",
+        "last_name": "Podrebarac",
+        "email": "dpodrebarac@email.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-20T21:45:04Z",
+        "full_name": "David Podrebarac",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$ZnRQQTVRblFQSlRO$6TCsvN+qyWrhewjIKeEK7Q",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "jkvakaric",
+        "first_name": "Josip",
+        "last_name": "Kvakaric",
+        "email": "jkvakaric@email.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-20T21:45:15Z",
+        "full_name": "Josip Kvakaric",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

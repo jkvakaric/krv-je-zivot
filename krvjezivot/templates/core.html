@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Krv Je Život{% endblock title %}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="krv-je-zivot">
+    <meta name="author" content="Josip Kvakarić">
+    <link rel='shortcut icon' type='image/x-icon' href="{% static 'images/favicon.ico' %}" />
+
+    {% block css %}
+    <!-- Your stuff: Third-party CSS libraries go here -->
+    <link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'lib/ionicons/dist/css/ionicons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'lib/admin-lte/dist/css/AdminLTE.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'lib/admin-lte/dist/css/skins/_all-skins.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'lib/admin-lte/plugins/iCheck/all.css' %}" />
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <!-- This file stores project-specific CSS -->
+    <link href="{% static 'css/project.min.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% endblock css %}
+  </head>
+
+  <body class="{% block bodyclasses %}fixed skin-red{% endblock bodyclasses %}">
+
+    {% block body %}{% endblock body %}
+
+    {% block modal %}{% endblock modal %}
+
+    <!-- javascript -->
+    {% block javascript %}
+
+    <!-- Your stuff: Third-party javascript libraries go here -->
+    <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/admin-lte/dist/js/adminlte.min.js' %}"></script>
+    <script src="{% static 'lib/admin-lte/plugins/iCheck/icheck.min.js' %}"></script>
+
+    <!-- project specific js file -->
+    <script src="{% static 'js/project.js' %}"></script>
+
+    {% endblock javascript %}
+
+  </body>
+
+</html>

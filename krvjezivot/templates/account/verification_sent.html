@@ -1,0 +1,22 @@
+{% extends "core.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Verify Your E-mail Address" %}{% endblock title %}
+
+{% block bodyclasses %}hold-transition login-page{% endblock bodyclasses %}
+
+{% block body %}
+  <div class="login-box">
+    <div class="login-logo">
+      <a>{% include 'partials/appname.html' %}</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <h2 class="login-box-msg">{% trans "Verify Your E-mail Address" %}</h2>
+      <p class="login-box-msg">{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->
+{% endblock body %}
