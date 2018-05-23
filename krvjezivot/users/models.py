@@ -6,7 +6,7 @@ from enumfields import EnumField
 from datetime import date
 
 from .enums import Sex
-from krvjezivot.dontations.enums import BloodGroup, RhesusFactor
+from krvjezivot.donations.enums import BloodGroup, RhesusFactor
 
 
 class User(AbstractUser):

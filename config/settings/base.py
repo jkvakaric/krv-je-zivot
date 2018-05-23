@@ -72,6 +72,8 @@ LOCAL_APPS = [
     'krvjezivot.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'krvjezivot.common.apps.CommonConfig',
+    'krvjezivot.administration.apps.AdministrationConfig',
+    'krvjezivot.donations.apps.DonationsConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
