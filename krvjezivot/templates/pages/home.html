@@ -34,22 +34,10 @@
     <div class="collapse navbar-collapse" id="example">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#">
-            <i class="fa fa-facebook-square"></i>
-            Like
-          </a>
+          <a href="{% url 'account_signup' %}"><i class="fa fa-link"></i> <span>{% trans "Sign Up" %}</span></a>
         </li>
         <li>
-          <a href="#">
-            <i class="fa fa-twitter"></i>
-            Tweet
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-pinterest"></i>
-            Pin
-          </a>
+          <a href="{% url 'account_login' %}"><i class="fa fa-link"></i> <span>{% trans "Sign In" %}</span></a>
         </li>
       </ul>
     </div>
