@@ -50,6 +50,7 @@ numpy = "*"
 aiohttp = "*"
 sklearn = "*"
 scipy = "*"
+imblearn = "*"
 
 [requires]
 python_version = "3.6"
