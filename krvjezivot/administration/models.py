@@ -42,3 +42,18 @@ class DonationInvite(models.Model):
         verbose_name=_("user"),
         related_name='user_invites',
         null=True)
+
+
+class ConfirmedDonation(models.Model):
+    id = models.AutoField(primary_key=True)
+    event = models.ForeignKey(
+        DonationEvent,
+        on_delete=models.CASCADE,
+        verbose_name=_("donation event"),
+        related_name='cd_event')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.DO_NOTHING,
+        verbose_name=_("user"),
+        related_name='user_donations',
+        null=True)

@@ -11,7 +11,7 @@ from krvjezivot.users.models import User
 from krvjezivot.users.enums import Sex
 
 from .forms import DonationEventForm, DonationVenueForm
-from .models import DonationEvent, DonationVenue, DonationInvite
+from .models import DonationEvent, DonationVenue, DonationInvite, ConfirmedDonation
 
 # Create your views here.
 
@@ -118,3 +118,30 @@ def donation_event_delete(request, event_id=None, *args, **kwargs):
         instance = get_object_or_404(DonationEvent, pk=event_id)
         instance.delete()
     return HttpResponseRedirect(reverse('administration:donation_events_list'))
+
+
+@require_GET
+@login_required
+def get_donation_qr_confirm(request, event_id=None, *args, **kwargs):
+    if event_id is not None:
+        instance = get_object_or_404(DonationEvent, pk=event_id)
+    return render(request, 'administration/qrcode_confirm.html',
+                  {'event': instance})
+
+
+@require_POST
+@login_required
+def user_donation_qr_confirm(request,
+                             qr_str=None,
+                             event_id=None,
+                             *args,
+                             **kwargs):
+    user_for_confirm = get_object_or_404(User, username=qr_str)
+    evnt_for_confirm = get_object_or_404(DonationEvent, id=event_id)
+
+    # ConfirmedDonation.objects.create(
+    #     user=user_for_confirm, event=evnt_for_confirm)
+
+    return HttpResponseRedirect(
+        reverse('administration:get_donation_qr_confirm'),
+        {'event': evnt_for_confirm})
