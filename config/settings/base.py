@@ -67,6 +67,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'qr_code',
 ]
 LOCAL_APPS = [
     'krvjezivot.users.apps.UsersConfig',

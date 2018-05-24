@@ -83,7 +83,7 @@
     "fields": {
         "password": "argon2$argon2i$v=19$m=512,t=2,p=2$ZnRQQTVRblFQSlRO$6TCsvN+qyWrhewjIKeEK7Q",
         "last_login": null,
-        "is_superuser": false,
+        "is_superuser": true,
         "username": "jkvakaric",
         "first_name": "Josip",
         "last_name": "Kvakaric",

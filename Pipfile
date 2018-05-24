@@ -48,6 +48,7 @@ rope = "==0.10.7"  # https://github.com/python-rope/rope
 pgcli = "==1.9.1"  # https://github.com/dbcli/pgcli
 pandas = "==0.23.0"  # https://github.com/pandas-dev/pandas
 numpy = "==1.14.3"  # https://github.com/numpy/numpy
+django-qr-code = "*"
 
 [requires]
 python_version = "3.6"
