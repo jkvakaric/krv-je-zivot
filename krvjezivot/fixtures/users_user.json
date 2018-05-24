@@ -14,6 +14,13 @@
         "is_active": true,
         "date_joined": "2018-05-20T21:43:39.869Z",
         "full_name": "Adminko Adminic",
+        "address": "Ivana Horvata 13, 47000 Karlovac, Hrvatska",
+        "frequency": "0.5",
+        "last_donation_date": "2018-01-20",
+        "sex": "M",
+        "blood_group": "0",
+        "rhesus_factor": "+",
+        "distance": "2",
         "groups": [],
         "user_permissions": []
     }
@@ -33,6 +40,13 @@
         "is_active": true,
         "date_joined": "2018-05-20T21:44:27Z",
         "full_name": "Stjepan Mocilac",
+        "address": "Ivana Horvata 17, 47000 Karlovac, Hrvatska",
+        "frequency": "2.8",
+        "last_donation_date": "2018-04-16",
+        "sex": "M",
+        "blood_group": "AB",
+        "rhesus_factor": "+",
+        "distance": "9",
         "groups": [],
         "user_permissions": []
     }
@@ -52,6 +66,13 @@
         "is_active": true,
         "date_joined": "2018-05-20T21:45:04Z",
         "full_name": "David Podrebarac",
+        "address": "Ivana Horvata 15, 47000 Karlovac, Hrvatska",
+        "frequency": "2.4",
+        "last_donation_date": "2018-05-20",
+        "sex": "M",
+        "blood_group": "A",
+        "rhesus_factor": "-",
+        "distance": "14",
         "groups": [],
         "user_permissions": []
     }
@@ -71,6 +92,13 @@
         "is_active": true,
         "date_joined": "2018-05-20T21:45:15Z",
         "full_name": "Josip Kvakaric",
+        "address": "Ivana Mazuranica 19a, 48000 Koprivnica, Hrvatska",
+        "frequency": "0.7",
+        "last_donation_date": "2018-01-27",
+        "sex": "M",
+        "blood_group": "A",
+        "rhesus_factor": "+",
+        "distance": "4",
         "groups": [],
         "user_permissions": []
     }

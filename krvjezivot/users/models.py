@@ -15,14 +15,14 @@ class User(AbstractUser):
     full_name = models.CharField(_("Full Name"), blank=True, max_length=255)
     address = models.CharField(_('address'), blank=True, max_length=1024)
 
-    frequency = models.FloatField(_("average number of donations last year"))
-    last_donation_date = models.DateField(_("date of last donation"))
-    sex = EnumField(Sex, verbose_name=_('sex'), max_length=32)
+    frequency = models.FloatField(_("average number of donations last year"), blank=True, null=True)
+    last_donation_date = models.DateField(_("date of last donation"), blank=True, null=True)
+    sex = EnumField(Sex, verbose_name=_('sex'), blank=True, null=True, max_length=32)
     blood_group = EnumField(
-        BloodGroup, verbose_name=_('blood group'), max_length=32)
+        BloodGroup, verbose_name=_('blood group'), blank=True, null=True, max_length=32)
     rhesus_factor = EnumField(
-        RhesusFactor, verbose_name=_('rhesus factor'), max_length=32)
-    distance = models.IntegerField(_('distance to nearest donation venue'))
+        RhesusFactor, verbose_name=_('rhesus factor'), blank=True, null=True, max_length=32)
+    distance = models.IntegerField(_('distance to nearest donation venue'), blank=True, null=True)
 
     def __str__(self):
         return self.username

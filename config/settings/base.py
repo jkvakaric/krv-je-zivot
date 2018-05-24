@@ -163,7 +163,11 @@ NPM_FILE_PATTERNS = {
     'font-awesome': ['css/*', 'fonts/*'],
     'ionicons': ['dist/*'],
     'jquery': ['dist/*'],
-    'admin-lte': ['dist/*', 'plugins/*']
+    'admin-lte': ['dist/*', 'plugins/*'],
+    'bootstrap-datepicker': ['dist/*'],
+    'select2': ['dist/*'],
+    'datatables.net': ['js/*'],
+    'datatables.net-bs': ['css/*', 'js/*'],
 }
 
 # MEDIA

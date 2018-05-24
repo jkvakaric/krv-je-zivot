@@ -31,13 +31,23 @@
   <li>
     <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
   </li>
+  <li class="header">VENUES</li>
   <li>
-    <a id="channel-add-button"><i class="fa fa-plus"></i> <span>Create Channel</span></a>
+    <a href="{% url 'administration:donation_venues_list' %}"><i class="fa fa-hospital-o"></i> <span>Donation Venues</span></a>
   </li>
-  <li class="header">CHAT</li>
-  <!-- Optionally, you can add icons to the links -->
+  <li>
+    <a id="donation-venue-add-button"><i class="fa fa-plus"></i> <span>Create Donation Venue</span></a>
+  </li>
+  <li class="header">EVENTS</li>
+  <li>
+    <a href="{% url 'administration:donation_events_list' %}"><i class="fa fa-calendar-o"></i> <span>Donation Events</span></a>
+  </li>
+  <li>
+    <a id="donation-event-add-button"><i class="fa fa-plus"></i> <span>Create Donation Event</span></a>
+  </li>
+  <li class="header">OTHER</li>
   <li class="treeview">
-    <a><i class="fa fa-cubes"></i> <span>Channels</span>
+    <a><i class="fa fa-cubes"></i> <span>Channel</span>
       <span class="pull-right-container">
         <i class="fa fa-angle-left pull-right"></i>
       </span>
@@ -64,12 +74,7 @@
       {% comment %} {% endfor %} {% endcomment %}
     </ul>
   </li>
-  <li class="header">OTHER</li>
-  <li>
-    <a href="#"><i class="fa fa-plus"></i> <span>Invite People</span></a>
-  </li>
-  <li>
-    <a href="#"><i class="fa fa-wrench"></i> <span>Settings</span></a>
-  </li>
 </ul>
 <!-- /.sidebar-menu -->
+
+
