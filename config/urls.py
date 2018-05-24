@@ -5,14 +5,13 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from django.contrib.auth.decorators import login_required
+from django.conf.urls import include, url
+from qr_code import urls as qr_code_urls
 
 urlpatterns = [
     url(r"^$",
         TemplateView.as_view(template_name="pages/home.html"),
         name="home"),
-    url(r'^about/$',
-        TemplateView.as_view(template_name='pages/about.html'),
-        name='about'),
     url(r'^contact/$',
         TemplateView.as_view(template_name='pages/contact.html'),
         name='contact'),
@@ -26,8 +25,10 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
     # User management
-    url(r"^users/",
-        include("krvjezivot.users.urls", namespace="users")),
+    url(r"^users/", include("krvjezivot.users.urls", namespace="users")),
+    url(r"^administration/", include("krvjezivot.administration.urls", namespace="administration")),
+    url(r"^donations/", include("krvjezivot.donations.urls", namespace="donations")),
+    url(r'^qr_code/', include(qr_code_urls, namespace="qr_code")),
     url(r"^accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here

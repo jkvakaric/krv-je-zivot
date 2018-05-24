@@ -67,11 +67,14 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'qr_code',
 ]
 LOCAL_APPS = [
     'krvjezivot.users.apps.UsersConfig',
     # Your stuff: custom apps go here
     'krvjezivot.common.apps.CommonConfig',
+    'krvjezivot.administration.apps.AdministrationConfig',
+    'krvjezivot.donations.apps.DonationsConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -161,7 +164,13 @@ NPM_FILE_PATTERNS = {
     'font-awesome': ['css/*', 'fonts/*'],
     'ionicons': ['dist/*'],
     'jquery': ['dist/*'],
-    'admin-lte': ['dist/*', 'plugins/*']
+    'admin-lte': ['dist/*', 'plugins/*'],
+    'bootstrap-datepicker': ['dist/*'],
+    'select2': ['dist/*'],
+    'datatables.net': ['js/*'],
+    'datatables.net-bs': ['css/*', 'js/*'],
+    'inputmask': ['dist/*'],
+    'instascan': ['src/*', 'index.js'],
 }
 
 # MEDIA

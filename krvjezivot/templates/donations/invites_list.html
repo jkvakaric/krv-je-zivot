@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block pageheader %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Donation Invitations
+    <small>pending and confirmed invitations</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i> Donation Invitations</a>
+    </li>
+  </ol>
+</section>
+{% endblock pageheader %}
+
+{% block content %}
+
+<h3 class="text-center">
+  Pending Invitations
+  <small>pending invitations</small>
+</h3>
+
+<table id="invites-table-pending" class="table table-striped table-bordered" style="width:100%">
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>Actions</th>
+      <th>Name</th>
+      <th>Venue</th>
+      <th>Address</th>
+      <th>End</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for invite in donation_invites_pending %}
+    <tr id="invite-{{ invite.id }}">
+        <td>{{ invite.event.event_start }}</td>
+        <td>
+            <a class="btn btn-xs btn-success" href="{% url 'donations:donation_invite_confirm' invite.id %}">Confirm</a>
+            <a class="btn btn-xs btn-warning" href="{% url 'donations:donation_invite_deny' invite.id %}">Deny</a>
+        </td>
+        <td>{{ invite.event.venue.name }}</td>
+        <td>{{ invite.event.venue.address }}</td>
+        <td>{{ invite.event.name }}</td>
+        <td>{{ invite.event.event_end }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3 class="text-center">
+  Confirmed Invitations
+  <small>confirmed invitations</small>
+</h3>
+
+<table id="invites-table-confirmed" class="table table-striped table-bordered" style="width:100%">
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>Name</th>
+      <th>Venue</th>
+      <th>Address</th>
+      <th>End</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for invite in donation_invites_confirmed %}
+      <tr id="invite-{{ invite.id }}">
+        <td>{{ invite.event.event_start }}</td>
+        <td>{{ invite.event.venue.name }}</td>
+        <td>{{ invite.event.venue.address }}</td>
+        <td>{{ invite.event.name }}</td>
+        <td>{{ invite.event.event_end }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
+
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#invites-table-pending').DataTable();
+      $('#invites-table-confirmed').DataTable();
+    });
+  </script>
+{% endblock javascript %}

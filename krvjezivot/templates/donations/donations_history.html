@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block pageheader %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Donation History
+    <small>past donations</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-tint"></i> Donation History</a>
+    </li>
+  </ol>
+</section>
+{% endblock pageheader %}
+
+{% block content %}
+
+<table id="donations-table" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Event</th>
+        <th>Took Place</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for don in donations %}
+        <tr id="don-{{ don.id }}">
+          <td>{{ don.user.full_name }}</td>
+          <td>{{ don.event.name }}</td>
+          <td>{{ don.event.event_start }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#donations-table').DataTable();
+    });
+  </script>
+{% endblock javascript %}

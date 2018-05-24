@@ -82,3 +82,36 @@
 <!-- ./wrapper -->
 
 {% endblock body %}
+
+{% block modal %}
+  <div id="donation-venue-add-modal" class="modal fade" role="dialog"></div>
+  <div id="donation-event-add-modal" class="modal fade" role="dialog"></div>
+{% endblock modal %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#donation-venue-add-button').on('click', function() {
+        $.ajax({
+          method: 'GET',
+          url: "{% url 'administration:donation_venue_add' %}",
+          success: function(htmlmodal) {
+            $("div#donation-venue-add-modal").html(htmlmodal);
+            $("div#donation-venue-add-modal").modal('show');
+          }
+        });
+      });
+      $('#donation-event-add-button').on('click', function() {
+        $.ajax({
+          method: 'GET',
+          url: "{% url 'administration:donation_event_add' %}",
+          success: function(htmlmodal) {
+            $("div#donation-event-add-modal").html(htmlmodal);
+            $("div#donation-event-add-modal").modal('show');
+          }
+        });
+      });
+    });
+  </script>
+{% endblock javascript %}

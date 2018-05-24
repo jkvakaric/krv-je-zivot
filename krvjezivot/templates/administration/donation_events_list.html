@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block pageheader %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Donation Events
+    <small>scheduled donation events</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i> Donation Events</a>
+    </li>
+  </ol>
+</section>
+{% endblock pageheader %}
+
+{% block content %}
+
+<table id="events-table" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th>Start</th>
+        <th>Name</th>
+        <th>End</th>
+        <th>Venue</th>
+        <th>Confirm QR</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in donation_events_list %}
+        <tr id="event-{{ event.id }}">
+          <td>{{ event.event_start }}</td>
+          <td>{{ event.name }}</td>
+          <td>{{ event.event_end }}</td>
+          <td>{{ event.venue.name }}</td>
+          <td><a class="btn btn-xs btn-primary" href="{% url 'administration:get_donation_qr_confirm' event.id %}">Confirm QR</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#events-table').DataTable();
+    });
+  </script>
+{% endblock javascript %}

@@ -3,18 +3,17 @@
 {% load i18n %}
 {% load static %}
 
+{% block css %}
+  {{ block.super }}
+
+    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+  <link href="{% static 'css/landing-page.css' %}" rel="stylesheet">
+  <link href="{% static 'css/pe-icon-7-stroke.css' %}" rel="stylesheet">
+{% endblock css %}
+
 {% block bodyclasses %}{% endblock bodyclasses %}
 
 {% block body %}
-
-  <!-- Navigation -->
-
-  <div class="text-center">
-    {# URL provided by django-allauth/account/urls.py #}
-    <a href="{% url 'account_signup' %}"><i class="fa fa-link"></i> <span>{% trans "Sign Up" %}</span></a>
-    {# URL provided by django-allauth/account/urls.py #}
-    <a href="{% url 'account_login' %}"><i class="fa fa-link"></i> <span>{% trans "Sign In" %}</span></a>
-  </div>
 
   {% block content %}{% endblock content %}
 
