@@ -49,6 +49,10 @@ pgcli = "==1.9.1"  # https://github.com/dbcli/pgcli
 pandas = "==0.23.0"  # https://github.com/pandas-dev/pandas
 numpy = "==1.14.3"  # https://github.com/numpy/numpy
 django-qr-code = "*"
+aiohttp = "*"
+sklearn = "*"
+scipy = "*"
+imblearn = "*"
 
 [requires]
 python_version = "3.6"
