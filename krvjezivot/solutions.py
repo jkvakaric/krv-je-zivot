@@ -14,7 +14,7 @@ def clean2group(data):
 
 class Solution:
     # TODO podesiti!
-    ODZIV = 0.15
+    ODZIV = 0.12
     # TODO postotak koji odreduje kada treba zahtjevati nove zalihe
     DELTA_THRESHOLD = 0.1
     FEMALE_LIMIT = 120
