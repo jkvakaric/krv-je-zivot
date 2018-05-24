@@ -14,7 +14,7 @@ def clean2group(data):
 
 class Solution:
     # TODO podesiti!
-    ODZIV = 0.12
+    ODZIV = 0.4
     # TODO postotak koji odreduje kada treba zahtjevati nove zalihe
     DELTA_THRESHOLD = 0.1
     FEMALE_LIMIT = 120
@@ -52,7 +52,30 @@ class Solution:
         cleaned = cleaned.drop(to_drop)
         return cleaned
 
+    def izracunaj_supply_s_korekcijom(self, supply):
+        inside_boundaries = list(map(lambda x, y: x and y, self.o_z > self.o_min, self.o_z < self.o_max))
+        can_send = inside_boundaries * supply > self.o_z
+        can_recv = inside_boundaries * supply < self.o_z
+        delta = np.abs(inside_boundaries * (supply - self.o_z))
+        print(supply)
+        for bg in reversed(PRIORITY_GF_LIST):
+            recv_i = BLOOD_GROUP_MAP[bg]
+            if can_recv[recv_i] and delta[recv_i] > 0:
+                for sender in GROUP_FACTOR_PRIMA[bg]:
+                    sender_i = BLOOD_GROUP_MAP[sender]
+                    if can_send[sender_i] > 0 and delta[sender_i] > 0 and delta[recv_i] > 0:
+                        to_send = min(delta[sender_i], delta[recv_i])
+                        delta[sender_i] -= to_send
+                        delta[recv_i] -= to_send
+                        supply[sender_i] -= to_send
+                        supply[recv_i] += to_send
+                        if delta[recv_i] == 0:
+                            break
+        print(supply)
+        return supply
+
     def pozovi_donore(self, supply: np.ndarray, days_passed):
+        # supply = self.izracunaj_supply_s_korekcijom(supply)
         delta = self._calculate_delta(supply)
         cleaned_data = self._clean_dataset(days_passed)
         features = ['frequency', 'last_donation', 'blood_group', 'sex', 'distance']
