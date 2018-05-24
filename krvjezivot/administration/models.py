@@ -8,7 +8,7 @@ class DonationVenue(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(_("donation venue name"), max_length=255)
     address = models.CharField(_("donation venue address"), max_length=255)
-    average_recall = models.FloatField(_('average recall percentage'))
+    average_recall = models.FloatField(_('average recall percentage'), default=1.0)
 
 
 class DonationEvent(models.Model):

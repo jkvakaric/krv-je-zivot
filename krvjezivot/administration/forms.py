@@ -16,6 +16,10 @@ class DonationEventForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(DonationEventForm, self).__init__(*args, **kwargs)
+        self.fields['venue'].choices = [
+            (v.pk, v.name) for v in DonationVenue.objects.all()
+        ]
+
         self.fields['event_start'].widget.attrs['class'] = 'datepicker'
         self.fields['event_end'].widget.attrs['class'] = 'datepicker'
         self.fields['venue'].widget.attrs['class'] = 'select2'
