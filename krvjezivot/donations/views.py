@@ -12,7 +12,7 @@ from krvjezivot.users.models import User
 from krvjezivot.users.enums import Sex
 
 from krvjezivot.administration.forms import DonationEventForm, DonationVenueForm
-from krvjezivot.administration.models import DonationEvent, DonationVenue, DonationInvite
+from krvjezivot.administration.models import DonationEvent, DonationVenue, DonationInvite, ConfirmedDonation
 
 # Create your views here.
 
@@ -35,13 +35,19 @@ def get_donation_invites_list(request):
 @require_POST
 @login_required
 def donation_invite_confirm(request, invite_id=None, *args, **kwargs):
-    pass
+    inv = get_object_or_404(DonationInvite, id=invite_id)
+    inv.confirmed = True
+    inv.save()
+    return HttpResponseRedirect(reverse('donations:donation_invites_list'))
 
 
 @require_POST
 @login_required
 def donation_invite_delete(request, invite_id=None, *args, **kwargs):
-    pass
+    if invite_id is not None:
+        inv = get_object_or_404(DonationInvite, id=invite_id)
+        inv.delete()
+    return HttpResponseRedirect(reverse('donations:donation_invites_list'))
 
 
 @require_GET
@@ -53,6 +59,6 @@ def get_qrcode(request):
 @require_GET
 @login_required
 def get_donation_history(request, *args, **kwargs):
-    donations = DonationEvent.objects.all()
+    donations = ConfirmedDonation.objects.filter(user=request.user)
     return render(request, 'donations/donations_history.html',
                   {'donations': donations})

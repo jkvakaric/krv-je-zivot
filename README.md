@@ -58,6 +58,13 @@ docker run -d -p 1025:1025 -p 8025:8025 --name=mailhog100 mailhog/mailhog:v1.0.0
 ```
 u docker naredbi napisati sifru za default usera (postgres)
 
+## recreate db
+
+```
+drop database krv_je_zivot
+create database krv_je_zivot
+```
+
 ## nakon update-a modela (db sloj)
 
 ```
