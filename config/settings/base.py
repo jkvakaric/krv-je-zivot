@@ -67,6 +67,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'qr_code',
 ]
 LOCAL_APPS = [
     'krvjezivot.users.apps.UsersConfig',
@@ -168,6 +169,7 @@ NPM_FILE_PATTERNS = {
     'select2': ['dist/*'],
     'datatables.net': ['js/*'],
     'datatables.net-bs': ['css/*', 'js/*'],
+    'inputmask': ['dist/*'],
 }
 
 # MEDIA

@@ -31,49 +31,30 @@
   <li>
     <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
   </li>
-  <li class="header">VENUES</li>
-  <li>
-    <a href="{% url 'administration:donation_venues_list' %}"><i class="fa fa-hospital-o"></i> <span>Donation Venues</span></a>
-  </li>
-  <li>
-    <a id="donation-venue-add-button"><i class="fa fa-plus"></i> <span>Create Donation Venue</span></a>
-  </li>
-  <li class="header">EVENTS</li>
-  <li>
-    <a href="{% url 'administration:donation_events_list' %}"><i class="fa fa-calendar-o"></i> <span>Donation Events</span></a>
-  </li>
-  <li>
-    <a id="donation-event-add-button"><i class="fa fa-plus"></i> <span>Create Donation Event</span></a>
-  </li>
-  <li class="header">OTHER</li>
-  <li class="treeview">
-    <a><i class="fa fa-cubes"></i> <span>Channel</span>
-      <span class="pull-right-container">
-        <i class="fa fa-angle-left pull-right"></i>
-      </span>
-    </a>
-    <ul class="treeview-menu">
-      {% comment %} {% for chan in user_channels_list %} {% endcomment %}
-        <li>
-          <a href="#"><i class="fa fa-cube"></i> <span>abc · </span></a>
-        </li>
-      {% comment %} {% endfor %} {% endcomment %}
-    </ul>
-  </li>
-  <li class="treeview">
-    <a><i class="fa fa-users"></i> <span>Direct Chat</span>
-      <span class="pull-right-container">
-        <i class="fa fa-angle-left pull-right"></i>
-      </span>
-    </a>
-    <ul class="treeview-menu">
-      {% comment %} {% for user in users_list %} {% endcomment %}
-        <li>
-          <a href="#"><i class="fa fa-user"></i> <span>abc</span></a>
-        </li>
-      {% comment %} {% endfor %} {% endcomment %}
-    </ul>
-  </li>
+  {% if request.user.is_superuser %}
+    <li class="header">VENUES</li>
+    <li>
+      <a href="{% url 'administration:donation_venues_list' %}"><i class="fa fa-hospital-o"></i> <span>Donation Venues</span></a>
+    </li>
+    <li>
+      <a id="donation-venue-add-button"><i class="fa fa-plus"></i> <span>Create Donation Venue</span></a>
+    </li>
+    <li class="header">EVENTS</li>
+    <li>
+      <a href="{% url 'administration:donation_events_list' %}"><i class="fa fa-calendar-o"></i> <span>Donation Events</span></a>
+    </li>
+    <li>
+      <a id="donation-event-add-button"><i class="fa fa-plus"></i> <span>Create Donation Event</span></a>
+    </li>
+  {% else %}
+    <li class="header">INVITATIONS</li>
+    <li>
+      <a href="{% url 'donations:donation_invites_list' %}"><i class="fa fa-envelope-o"></i> <span>Donation Invites</span></a>
+    </li>
+    <li>
+      <a href="{% url 'donations:user_qrcode' %}"><i class="fa fa-qrcode"></i> <span>QR Code</span></a>
+    </li>
+  {% endif %}
 </ul>
 <!-- /.sidebar-menu -->
 

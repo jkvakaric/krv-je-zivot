@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load qr_code %}
+
+{% block pageheader %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    QR Code
+    <small>show this at donation event</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-qrcode"></i> QR Code</a>
+    </li>
+  </ol>
+</section>
+{% endblock pageheader %}
+
+{% block content %}
+
+<div class="center-block">
+  <img src="{% qr_url_from_text request.user.username size='M' image_format='png' error_correction='L' %}" style="max-width: 600px; display: block; margin-left: auto; margin-right: auto; width: 100%;">
+</div>
+
+{% endblock content %}
