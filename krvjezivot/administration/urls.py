@@ -50,7 +50,7 @@ urlpatterns = [
         views.get_donation_qr_confirm,
         name='get_donation_qr_confirm'),
     path(
-        'qr_donation_confirm/<int:event_id>/<str:qr_str>',
+        'qr_donation_confirm/<int:event_id>',
         views.user_donation_qr_confirm,
         name='user_donation_qr_confirm'),
 ]

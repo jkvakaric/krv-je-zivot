@@ -170,6 +170,7 @@ NPM_FILE_PATTERNS = {
     'datatables.net': ['js/*'],
     'datatables.net-bs': ['css/*', 'js/*'],
     'inputmask': ['dist/*'],
+    'instascan': ['src/*', 'index.js'],
 }
 
 # MEDIA

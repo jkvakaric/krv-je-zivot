@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block pageheader %}
+<!-- Content Header (Page header) -->
+<section class='content-header'>
+ <h1>
+   QR Code Confirmation
+   <small>confirm venue for event [{{ event.name }}]</small>
+ </h1>
+ <ol class='breadcrumb'>
+   <li>
+     <a>
+       <i class='fa fa-qrcode'></i> QR Code Confirmation</a>
+   </li>
+ </ol>
+</section>
+{% endblock pageheader %}
+
+{% block content %}
+
+<video id='qrcodescan' style="max-width: 600px; display: block; margin-left: auto; margin-right: auto; width: 100%;"></video>
+
+{% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type='text/javascript'>
+    let scanner = new Instascan.Scanner({ video: document.getElementById('qrcodescan') });
+    scanner.addListener('scan', function (username) {
+      var urlpost = "{% url 'administration:user_donation_qr_confirm' event.id %}";
+      $.ajax({
+        method: 'POST',
+        url: urlpost,
+        data: {'username': username},
+        dataType: 'json'
+      });
+    });
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      } else {
+        console.error('No cameras found.');
+      }
+    }).catch(function (e) {
+      console.error(e);
+    });
+ </script>
+{% endblock javascript %}

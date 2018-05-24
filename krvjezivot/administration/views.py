@@ -6,6 +6,7 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.http import require_POST, require_GET
+from django.views.decorators.csrf import csrf_exempt
 
 from krvjezivot.users.models import User
 from krvjezivot.users.enums import Sex
@@ -129,18 +130,19 @@ def get_donation_qr_confirm(request, event_id=None, *args, **kwargs):
                   {'event': instance})
 
 
-@require_POST
+@csrf_exempt
 @login_required
-def user_donation_qr_confirm(request,
-                             qr_str=None,
-                             event_id=None,
-                             *args,
-                             **kwargs):
-    user_for_confirm = get_object_or_404(User, username=qr_str)
-    evnt_for_confirm = get_object_or_404(DonationEvent, id=event_id)
+def user_donation_qr_confirm(request, event_id=None, *args, **kwargs):
+    uname = request.POST.get("username", "")
 
-    # ConfirmedDonation.objects.create(
-    #     user=user_for_confirm, event=evnt_for_confirm)
+    user_for_confirm = get_object_or_404(User, username=uname)
+    evnt_for_confirm = get_object_or_404(DonationEvent, id=event_id)
+    invitation = get_object_or_404(
+        DonationInvite, event_id=event_id, user=user_for_confirm)
+
+    if invitation.confirmed is True:
+        ConfirmedDonation.objects.create(
+            user=user_for_confirm, event=evnt_for_confirm)
 
     return HttpResponseRedirect(
         reverse('administration:get_donation_qr_confirm'),

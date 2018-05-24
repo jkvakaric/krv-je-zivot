@@ -48,3 +48,11 @@ def donation_invite_delete(request, invite_id=None, *args, **kwargs):
 @login_required
 def get_qrcode(request):
     return render(request, 'donations/qrcode.html')
+
+
+@require_GET
+@login_required
+def get_donation_history(request, *args, **kwargs):
+    donations = DonationEvent.objects.all()
+    return render(request, 'donations/donations_history.html',
+                  {'donations': donations})
