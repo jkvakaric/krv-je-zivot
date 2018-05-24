@@ -111,12 +111,13 @@ class DonationEventFormView(LoginRequiredMixin, View):
             DonationInvite.objects.create(event=evnt, user=request.user)
 
 
-@require_GET
+@require_POST
 @login_required
-def get_donation_events_list(request):
-    donation_events_list = DonationEvent.objects.all()
-    return render(request, 'administration/donation_events_list.html',
-                  {'donation_events_list': donation_events_list})
+def donation_event_delete(request, event_id=None, *args, **kwargs):
+    if event_id is not None:
+        instance = get_object_or_404(DonationEvent, pk=event_id)
+        instance.delete()
+    return HttpResponseRedirect(reverse('administration:donation_events_list'))
 
 
 @require_GET
