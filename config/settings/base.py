@@ -168,6 +168,7 @@ NPM_FILE_PATTERNS = {
     'select2': ['dist/*'],
     'datatables.net': ['js/*'],
     'datatables.net-bs': ['css/*', 'js/*'],
+    'inputmask': ['dist/*'],
 }
 
 # MEDIA

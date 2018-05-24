@@ -20,6 +20,6 @@ class DonationEventForm(forms.ModelForm):
             (v.pk, v.name) for v in DonationVenue.objects.all()
         ]
 
-        self.fields['event_start'].widget.attrs['class'] = 'datepicker'
-        self.fields['event_end'].widget.attrs['class'] = 'datepicker'
+        self.fields['event_start'].widget.attrs['class'] = 'im-datetime'
+        self.fields['event_end'].widget.attrs['class'] = 'im-datetime'
         self.fields['venue'].widget.attrs['class'] = 'select2'

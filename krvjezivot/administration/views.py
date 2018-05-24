@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, get_list_or_404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.http import require_POST, require_GET
 
-# from krvjezivot.users.models import User
+from krvjezivot.users.models import User
+from krvjezivot.users.enums import Sex
 
 from .forms import DonationEventForm, DonationVenueForm
-from .models import DonationEvent, DonationVenue
+from .models import DonationEvent, DonationVenue, DonationInvite
 
 # Create your views here.
 
@@ -19,7 +20,8 @@ from .models import DonationEvent, DonationVenue
 @login_required
 def get_donation_venues_list(request):
     donation_venues_list = DonationVenue.objects.all()
-    return render(request, 'administration/donation-venues-list.html', {'donation_venues_list': donation_venues_list})
+    return render(request, 'administration/donation-venues-list.html',
+                  {'donation_venues_list': donation_venues_list})
 
 
 class DonationVenueFormView(LoginRequiredMixin, View):
@@ -44,7 +46,8 @@ class DonationVenueFormView(LoginRequiredMixin, View):
                 self.instance = get_object_or_404(DonationVenue, pk=venue_id)
                 form = self.form_class(request.POST, instance=self.instance)
             form.save()
-            return HttpResponseRedirect(reverse('dashboard'))
+            return HttpResponseRedirect(
+                reverse('administration:donation_venues_list'))
         return render(request, self.template_name, {
             'form': form,
             'venue_id': venue_id
@@ -57,14 +60,15 @@ def donation_venue_delete(request, venue_id=None, *args, **kwargs):
     if venue_id is not None:
         instance = get_object_or_404(DonationVenue, pk=venue_id)
         instance.delete()
-    return HttpResponseRedirect(reverse('administration:donation_venue_list'))
+    return HttpResponseRedirect(reverse('administration:donation_venues_list'))
 
 
 @require_GET
 @login_required
 def get_donation_events_list(request):
     donation_events_list = DonationEvent.objects.all()
-    return render(request, 'administration/donation_events_list.html', {'donation_events_list': donation_events_list})
+    return render(request, 'administration/donation_events_list.html',
+                  {'donation_events_list': donation_events_list})
 
 
 class DonationEventFormView(LoginRequiredMixin, View):
@@ -88,13 +92,23 @@ class DonationEventFormView(LoginRequiredMixin, View):
             if event_id is not None:
                 self.instance = get_object_or_404(DonationEvent, pk=event_id)
                 form = self.form_class(request.POST, instance=self.instance)
-            form.save()
+            evnt = form.save()
+            self.send_invitations(request, evnt)
             return HttpResponseRedirect(
-                reverse('administration:donation_event_list'))
+                reverse('administration:donation_events_list'))
         return render(request, self.template_name, {
             'form': form,
             'event_id': event_id
         })
+
+    def send_invitations(self, request, evnt):
+        users = [
+            usr for usr in User.objects.all()
+            if usr.get_days_since_last_donation > 90 and usr.sex == Sex.MALE
+            or usr.get_days_since_last_donation > 90 and usr.sex == Sex.FEMALE
+        ]
+        for user in users:
+            DonationInvite.objects.create(event=evnt, user=request.user)
 
 
 @require_POST
@@ -103,4 +117,4 @@ def donation_event_delete(request, event_id=None, *args, **kwargs):
     if event_id is not None:
         instance = get_object_or_404(DonationEvent, pk=event_id)
         instance.delete()
-    return HttpResponseRedirect(reverse('administration:donation_event_list'))
+    return HttpResponseRedirect(reverse('administration:donation_events_list'))

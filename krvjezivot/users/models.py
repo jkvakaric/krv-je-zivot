@@ -30,9 +30,11 @@ class User(AbstractUser):
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
 
+    @property
     def get_days_since_last_donation(self):
         time_span = self.last_donation_date - date.today()
         return time_span.days
 
+    @property
     def get_blood_type(self):
         return self.blood_group + self.rhesus_factor
