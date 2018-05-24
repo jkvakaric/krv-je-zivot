@@ -20,11 +20,6 @@ def loss_function(o_min, o_max, x, r):
     return 200 / r * (x - o_max) + 35
 
 
-def loss_function_sum():
-
-
-
-
 
 
 
