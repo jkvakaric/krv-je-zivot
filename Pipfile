@@ -47,6 +47,9 @@ yapf = "==0.21.0"  # https://github.com/google/yapf
 rope = "==0.10.7"  # https://github.com/python-rope/rope
 pandas = "*"
 numpy = "*"
+aiohttp = "*"
+sklearn = "*"
+scipy = "*"
 
 [requires]
 python_version = "3.6"

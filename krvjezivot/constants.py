@@ -1,3 +1,5 @@
+import numpy as np
+
 # minimalna vrijednost
 O_MIN = [
     38,
@@ -34,7 +36,6 @@ O_Z = [
     26,
 ]
 
-
 # potrosnja
 P = [
     35,
@@ -55,3 +56,19 @@ GROUP_B_minus = 4
 GROUP_B_plus = 5
 GROUP_AB_minus = 4
 GROUP_AB_plus = 5
+
+BLOOD_GROUP_MAP = {
+    '0-': 0,
+    '0+': 1,
+    'A-': 2,
+    'A+': 3,
+    'B-': 4,
+    'B+': 5,
+    'AB-': 6,
+    'AB+': 7,
+}
+
+SEX_MAP = {
+    'Z': 0,
+    'M': 1,
+}
