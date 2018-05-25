@@ -48,11 +48,11 @@ rope = "==0.10.7"  # https://github.com/python-rope/rope
 pgcli = "==1.9.1"  # https://github.com/dbcli/pgcli
 pandas = "==0.23.0"  # https://github.com/pandas-dev/pandas
 numpy = "==1.14.3"  # https://github.com/numpy/numpy
-django-qr-code = "*"
-aiohttp = "*"
-sklearn = "*"
-scipy = "*"
-imblearn = "*"
+django-qr-code = "==1.0.0"  # https://github.com/dprog-philippe-docourt/django-qr-code
+aiohttp = "==3.2.1"  # https://github.com/aio-libs/aiohttp
+sklearn = "==0.0"  # https://github.com/scikit-learn/scikit-learn
+scipy = "==1.1.0"  # https://github.com/scipy/scipy
+imblearn = "==0.0"  # https://github.com/scikit-learn-contrib/imbalanced-learn
 
 [requires]
 python_version = "3.6"
